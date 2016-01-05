@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CRUD Template</title>
+    <link href="https://necolas.github.io/normalize.css/3.0.2/normalize.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
 
@@ -14,30 +15,36 @@
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
             <a class="navbar-brand" href="#">CRUD example</a>
           </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
-      <h1>{{hello}}</h1>
+      <h1>Network devices:</h1>
     </header>
 
     <section>
+      <!-- CREATING -->
       <div class="container">
-            <div ng-view></div>
+        <div ng-if="shouldShowCreating()">
+          <button type="button" class="btn btn-link" ng-click="startCreating()">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add new network device
+          </button>
+          <div ng-if="isCreating">
+              Add a new network devices form here
+              <button type="button" class="btn btn-default pull-right" ng-click="cancelCreating()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+          <ul class="list-group">
+              <li class="list-group-item" ng-repeat="device in devices">
+                <a href="#" target="_blank">edit</a>
+                <a href="#" target="_blank">{{device.name}}</a>
+                <button type="button" class="close">&times;</button>
+              </li>
+          </ul>
       </div>
     </section>
 
