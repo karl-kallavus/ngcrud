@@ -51,11 +51,6 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     // CREATING STATES
     //-------------------------------------------------------------------------------------------------
 
-    function shouldShowCreating() {
-        // return !$scope.isEditing;
-        return true;
-    }
-
     function startCreating() {
         $scope.isCreating = true;
         $scope.isEditing = false;
@@ -75,7 +70,6 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     //-------------------------------------------------------------------------------------------------
     // EDITING STATES
     //-------------------------------------------------------------------------------------------------
-
 
     function shouldShowEditing() {
         return $scope.isEditing && !$scope.isCreating;
