@@ -45,7 +45,18 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         resetCreateForm();
     }
 
+    function updateDevice(device) {
+        var index = _.findIndex($scope.devices, function (d) {
+            return d.id == device.id;
+        });
+        $scope.devices[index] = device;
+
+        $scope.editedDevice = null;
+        $scope.isEditing = false;
+    }
+
     $scope.createDevice = createDevice;
+    $scope.updateDevice = updateDevice;
 
     //-------------------------------------------------------------------------------------------------
     // CREATING STATES
@@ -63,7 +74,6 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         $scope.isCreating = false;
     }
 
-    $scope.shouldShowCreating = shouldShowCreating;
     $scope.startCreating = startCreating;
     $scope.cancelCreating = cancelCreating;
 
