@@ -30,18 +30,27 @@
             <span class="glyphicon glyphicon-plus"></span>
             Add new network device
           </button>
-          <div ng-if="isCreating">
-              Add a new network devices form here
+
+          <form class="create-form" ng-show="isCreating" role="form" ng-submit="createDevice(newDevice)" novalidate>
+              <div class="form-group">
+                  <label for="newDeviceName">Device Name</label>
+                  <input type="text" class="form-control" id="newDeviceName" ng-model="newDevice.name" placeholder="Enter name">
+              </div>
+              <div class="form-group">
+                  <label for="newDeviceIp">Device IP</label>
+                  <input type="text" class="form-control" id="newDeviceIp" ng-model="newDevice.ip" placeholder="Enter IP">
+              </div>
+              <button type="submit" class="btn btn-info btn-lg">Create</button>
               <button type="button" class="btn btn-default pull-right" ng-click="cancelCreating()">Cancel</button>
-          </div>
-        </div>
+          </form>
       </div>
 
       <div class="container">
           <ul class="list-group">
-              <li class="list-group-item" ng-repeat="device in devices">
-                <a href="#" target="_blank">edit</a>
-                <a href="#" target="_blank">{{device.name}}</a>
+              <li class="list-group-item" ng-repeat="device in devices" ng-class="{'active':isCurrentDevice(device)}">
+                <a href="#">edit</a>
+                <a href="#" ng-click="setCurrentDevice(device)">{{device.name}}</a>
+                {{device.ip}}
                 <button type="button" class="close">&times;</button>
               </li>
           </ul>

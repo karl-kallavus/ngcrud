@@ -20,15 +20,36 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         return $scope.currentDevice !== null && device.name === $scope.currentDevice.name;
     }
 
-    function setcurrentDevice(device) {
+    function setCurrentDevice(device) {
         $scope.currentDevice = device;
 
         cancelCreating();
-        cancelEditing();
+        // cancelEditing();
     }
 
     $scope.isCurrentDevice = isCurrentDevice;
-    $scope.setcurrentDevice = setcurrentDevice;
+    $scope.setCurrentDevice = setCurrentDevice;
+
+    function resetCreateForm() {
+          $scope.newDevice = {
+              name: '',
+              ip: ''
+          };
+    }
+
+
+    //-------------------------------------------------------------------------------------------------
+    // CRUD
+    //-------------------------------------------------------------------------------------------------
+
+    function createDevice(device) {
+        device.id = $scope.devices.length;
+        $scope.devices.push(device);
+
+        resetCreateForm();
+    }
+
+    $scope.createDevice = createDevice;
 
     //-------------------------------------------------------------------------------------------------
     // CREATING STATES
@@ -40,6 +61,9 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     function startCreating() {
         $scope.isCreating = true;
         $scope.isEditing = false;
+        $scope.currentDevice = null;
+
+        resetCreateForm();
     }
 
     function cancelCreating() {
