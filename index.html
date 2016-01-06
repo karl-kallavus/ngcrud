@@ -53,7 +53,7 @@
                 {{device.ip}}
                 <button type="button" ng-click="deleteDevice(device)" class="close">&times;</button>
                 <!-- EDITING -->
-                <div ng-show="isSelectedDevice(device.id) && shouldShowEditing()">
+                <div ng-show="isEditedDevice(device.id) && shouldShowEditing()">
                     <h4>Editing {{editedDevice.name}}</h4>
 
                     <form class="edit-form" role="form" ng-submit="updateDevice(editedDevice)" novalidate>

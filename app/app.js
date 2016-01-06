@@ -12,8 +12,8 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.isEditing = false;
     $scope.editedDevice = null;
 
-    function isEditedDevice(device) {
-        return $scope.editedDevice !== null && device.name === $scope.editedDevice.name;
+    function isEditedDevice(deviceId) {
+        return $scope.editedDevice !== null && $scope.editedDevice.id === deviceId;
     }
 
     function setEditedDevice(device) {
@@ -22,14 +22,8 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         cancelCreating();
     }
 
-    function isSelectedDevice(deviceId) {
-        return $scope.editedDevice !== null && $scope.editedDevice.id === deviceId;
-    }
-
     $scope.isEditedDevice = isEditedDevice;
     $scope.setEditedDevice = setEditedDevice;
-    $scope.isSelectedDevice = isSelectedDevice;
-
 
     function resetCreateForm() {
           $scope.newDevice = {
