@@ -15,7 +15,7 @@
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <a class="navbar-brand" ng-click="setCurrentDevice(null)" href="#">CRUD example</a>
+            <a class="navbar-brand" href="#">CRUD example</a>
           </div>
         </div><!-- /.container-fluid -->
       </nav>
@@ -53,7 +53,7 @@
                 {{device.ip}}
                 <button type="button" ng-click="deleteDevice(device)" class="close">&times;</button>
                 <!-- EDITING -->
-                <div ng-show="isEditedDevice(editedDevice) && shouldShowEditing()">
+                <div ng-show="isSelectedDevice(device.id) && shouldShowEditing()">
                     <h4>Editing {{editedDevice.name}}</h4>
 
                     <form class="edit-form" role="form" ng-submit="updateDevice(editedDevice)" novalidate>
@@ -69,7 +69,6 @@
                         <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
                     </form>
                 </div>
-
               </li>
           </ul>
       </div>
