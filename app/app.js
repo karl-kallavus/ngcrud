@@ -18,7 +18,7 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     }
 
     function setEditedDevice(device) {
-        $scope.editedDevice = device;
+        $scope.editedDevice = angular.copy(device);
 
         cancelCreating();
     }
