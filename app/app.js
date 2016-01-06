@@ -11,6 +11,7 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.isCreating = false;
     $scope.isEditing = false;
     $scope.currentDevice = null;
+    $scope.editedDevice = null;
 
     function isCurrentDevice(device) {
         return $scope.currentDevice !== null && device.name === $scope.currentDevice.name;
@@ -20,11 +21,25 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         $scope.currentDevice = device;
 
         cancelCreating();
-        // cancelEditing();
+        cancelEditing();
     }
 
     $scope.isCurrentDevice = isCurrentDevice;
     $scope.setCurrentDevice = setCurrentDevice;
+
+    function isEditedDevice(device) {
+        return $scope.editedDevice !== null && device.name === $scope.editedDevice.name;
+    }
+
+    function setEditedDevice(device) {
+        $scope.editedDevice = device;
+
+        cancelCreating();
+    }
+
+    $scope.isEditedDevice = isEditedDevice;
+    $scope.setEditedDevice = setEditedDevice;
+
 
     function resetCreateForm() {
           $scope.newDevice = {
@@ -51,7 +66,8 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     //-------------------------------------------------------------------------------------------------
 
     function shouldShowCreating() {
-        return !$scope.isEditing;
+        // return !$scope.isEditing;
+        return true;
     }
 
     function startCreating() {
@@ -69,4 +85,27 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.shouldShowCreating = shouldShowCreating;
     $scope.startCreating = startCreating;
     $scope.cancelCreating = cancelCreating;
+
+    //-------------------------------------------------------------------------------------------------
+    // EDITING STATES
+    //-------------------------------------------------------------------------------------------------
+
+
+    function shouldShowEditing() {
+        return $scope.isEditing && !$scope.isCreating;
+    }
+
+    function startEditing() {
+        $scope.isCreating = false;
+        $scope.isEditing = true;
+    }
+
+    function cancelEditing() {
+        $scope.isEditing = false;
+        $scope.editedDevice = null;
+    }
+
+    $scope.startEditing = startEditing;
+    $scope.cancelEditing = cancelEditing;
+    $scope.shouldShowEditing = shouldShowEditing;
 }]);

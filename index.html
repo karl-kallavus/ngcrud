@@ -48,10 +48,14 @@
       <div class="container">
           <ul class="list-group">
               <li class="list-group-item" ng-repeat="device in devices" ng-class="{'active':isCurrentDevice(device)}">
-                <a href="#">edit</a>
+                <a href="#" ng-click="setEditedDevice(device);startEditing();">edit</a>
                 <a href="#" ng-click="setCurrentDevice(device)">{{device.name}}</a>
                 {{device.ip}}
                 <button type="button" class="close">&times;</button>
+                <div ng-show="isEditedDevice(device) && shouldShowEditing()">
+                    Form for editing a device would be here soon!
+                    <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+                </div>
               </li>
           </ul>
       </div>
