@@ -51,7 +51,7 @@
                 <a href="#" ng-click="setEditedDevice(device);startEditing();">edit</a>
                 <a href="#">{{device.name}}</a>
                 {{device.ip}}
-                <button type="button" class="close">&times;</button>
+                <button type="button" ng-click="deleteDevice(device)" class="close">&times;</button>
                 <!-- EDITING -->
                 <div ng-show="isEditedDevice(editedDevice) && shouldShowEditing()">
                     <h4>Editing {{editedDevice.name}}</h4>

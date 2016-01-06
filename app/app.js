@@ -55,8 +55,15 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         $scope.isEditing = false;
     }
 
+    function deleteDevice(device) {
+        _.remove($scope.devices, function(d) {
+            return d.id == device.id;
+        });
+    }
+
     $scope.createDevice = createDevice;
     $scope.updateDevice = updateDevice;
+    $scope.deleteDevice = deleteDevice;
 
     //-------------------------------------------------------------------------------------------------
     // CREATING STATES
