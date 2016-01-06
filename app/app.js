@@ -13,20 +13,6 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.currentDevice = null;
     $scope.editedDevice = null;
 
-    function isCurrentDevice(device) {
-        return $scope.currentDevice !== null && device.name === $scope.currentDevice.name;
-    }
-
-    function setCurrentDevice(device) {
-        $scope.currentDevice = device;
-
-        cancelCreating();
-        cancelEditing();
-    }
-
-    $scope.isCurrentDevice = isCurrentDevice;
-    $scope.setCurrentDevice = setCurrentDevice;
-
     function isEditedDevice(device) {
         return $scope.editedDevice !== null && device.name === $scope.editedDevice.name;
     }
