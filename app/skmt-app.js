@@ -1,6 +1,6 @@
-var crudApp = angular.module('crudApp', []);
+var skmtApp = angular.module('skmtApp', []);
 
-crudApp.controller('MainCtrl', ['$scope', function ($scope) {
+skmtApp.controller('MainCtrl', ['$scope', function ($scope) {
 
     $scope.devices = [
         {"id": 0, "name": "cisco 2811", "ip": "192.168.100.30"},
