@@ -1,4 +1,6 @@
-var skmtApp = angular.module('skmtApp', []);
+var skmtApp = angular.module('skmtApp', [
+    'devices'
+]);
 
 skmtApp.controller('MainCtrl', ['$scope', function ($scope) {
 
