@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CRUD Template</title>
     <link href="https://necolas.github.io/normalize.css/3.0.2/normalize.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body ng-controller="MainCtrl">
@@ -48,10 +48,10 @@
       <div class="container">
           <ul class="list-group">
               <li class="list-group-item" ng-repeat="device in devices">
-                <a href="#" ng-click="setEditedDevice(device);startEditing();">edit</a>
+                <a href="#" ng-click="setEditedDevice(device);startEditing();"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a href="#">{{device.name}}</a>
                 {{device.ip}}
-                <button type="button" ng-click="deleteDevice(device)" class="close">&times;</button>
+                <button type="button" ng-click="deleteDevice(device)" class="close"><span class="glyphicon glyphicon-trash"></span></button>
                 <!-- EDITING -->
                 <div ng-show="isEditedDevice(device.id) && shouldShowEditing()">
                     <h4>Editing {{editedDevice.name}}</h4>
