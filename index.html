@@ -10,74 +10,15 @@
   </head>
 
   <body ng-controller="MainCtrl">
-    <header>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">SKMT CRUD example</a>
-          </div>
-        </div><!-- /.container-fluid -->
-      </nav>
-      <h1>Network devices:</h1>
-    </header>
+    <div class="container-fluid" ui-view>
 
-    <section>
-      <!-- CREATING -->
-      <div class="container">
-          <button type="button" class="btn btn-link" ng-click="startCreating()">
-            <span class="glyphicon glyphicon-plus"></span>
-            Add new network device
-          </button>
-
-          <form class="create-form" ng-show="isCreating" role="form" ng-submit="createDevice(newDevice)" novalidate>
-              <div class="form-group">
-                  <label for="newDeviceName">Device Name</label>
-                  <input type="text" class="form-control" id="newDeviceName" ng-model="newDevice.name" placeholder="Enter name">
-              </div>
-              <div class="form-group">
-                  <label for="newDeviceIp">Device IP</label>
-                  <input type="text" class="form-control" id="newDeviceIp" ng-model="newDevice.ip" placeholder="Enter IP">
-              </div>
-              <button type="submit" class="btn btn-info">Create</button>
-              <button type="button" class="btn btn-default pull-right" ng-click="cancelCreating()">Cancel</button>
-          </form>
-      </div>
-
-      <!-- LIST OF NETWORK DEVICES -->
-      <div class="container">
-          <ul class="list-group">
-              <li class="list-group-item" ng-repeat="device in devices">
-                <a href="#" ng-click="setEditedDevice(device);startEditing();"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="#">{{device.name}}</a>
-                {{device.ip}}
-                <button type="button" ng-click="deleteDevice(device)" class="close"><span class="glyphicon glyphicon-trash"></span></button>
-                <!-- EDITING -->
-                <div ng-show="isEditedDevice(device.id) && shouldShowEditing()">
-                    <h4>Editing {{editedDevice.name}}</h4>
-
-                    <form class="edit-form" role="form" ng-submit="updateDevice(editedDevice)" novalidate>
-                        <div class="form-group">
-                            <label>Device Name</label>
-                            <input type="text" class="form-control" ng-model="editedDevice.name" placeholder="Enter name">
-                        </div>
-                        <div class="form-group">
-                            <label>IP Address</label>
-                            <input type="text" class="form-control" ng-model="editedDevice.ip" placeholder="Enter IP">
-                        </div>
-                        <button type="submit" class="btn btn-info">Save</button>
-                        <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
-                    </form>
-                </div>
-              </li>
-          </ul>
-      </div>
-    </section>
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/js/angular-ui-router.js"></script>
     <script src="vendor/js/lodash.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
 
