@@ -41,6 +41,7 @@ crudApp.controller('MainCtrl', ['$scope', function ($scope) {
         $scope.devices.push(device);
 
         resetCreateForm();
+        cancelCreating();
     }
 
     function updateDevice(device) {
