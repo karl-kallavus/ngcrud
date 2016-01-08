@@ -3,13 +3,14 @@ var skmtApp = angular.module('skmtApp', [
     'devices'
 ]);
 
-skmtApp.config(function ($stateProvider) {
-    $stateProvider
-        .state('skmt', {
-            url: '/', // Make to navigate to index.html#/
-            templateUrl: 'app/devices/devices.tmpl.html',
-            controller: 'MainCtrl'
-        });
+skmtApp.config(function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('skmt', {
+                url: '',
+                abstract: true
+            });
+
+        $urlRouterProvider.otherwise('/');
 });
 
 skmtApp.controller('MainCtrl', ['$scope', function ($scope) {
