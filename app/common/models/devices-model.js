@@ -5,8 +5,16 @@ angular.module('skmt.models.devices', [])
             FETCH: 'data/devices.json'
         }
 
+        function extract(result) {
+            return result.data;
+        }
+
+        function cacheDevices(result) {
+            devices = extract(result);
+            return devices;
+        }
         model.getDevices = function () {
-            return $http.get(URLS.FETCH);
+            return $http.get(URLS.FETCH).then(cacheDevices);
         }
     })
 

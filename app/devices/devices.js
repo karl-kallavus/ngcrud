@@ -20,7 +20,7 @@ angular.module('devices', [
 
         DevicesModel.getDevices()
             .then(function(result) {
-                devicesListCtrl.devices = result.data;
+                devicesListCtrl.devices = result;
                 console.log('result', result);
             });
     })
