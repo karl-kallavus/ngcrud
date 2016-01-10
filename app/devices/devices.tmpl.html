@@ -35,7 +35,7 @@
   <!-- LIST OF NETWORK DEVICES -->
   <div class="container">
       <ul class="list-group">
-          <li class="list-group-item" ng-repeat="device in devices">
+          <li class="list-group-item" ng-repeat="device in devicesListCtrl.devices">
             <a href="#" ng-click="setEditedDevice(device);startEditing();"><span class="glyphicon glyphicon-pencil"></span></a>
             <a href="#">{{device.name}}</a>
             {{device.ip}}

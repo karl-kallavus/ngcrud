@@ -15,12 +15,6 @@ skmtApp.config(function ($stateProvider, $urlRouterProvider) {
 
 skmtApp.controller('MainCtrl', ['$scope', function ($scope) {
 
-    $scope.devices = [
-        {"id": 0, "name": "cisco 2811", "ip": "192.168.100.30"},
-        {"id": 1, "name": "cisco 7200", "ip": "192.168.100.31"},
-        {"id": 2, "name": "juniper", "ip": "192.168.100.32"},
-    ];
-
     $scope.isCreating = false;
     $scope.isEditing = false;
     $scope.editedDevice = null;

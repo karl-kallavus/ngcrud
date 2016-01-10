@@ -9,13 +9,14 @@ angular.module('devices', [
                 url: '/',
                 views: {
                     'devices@': {
-                        controller: 'DevicesCtrl',
+                        controller: 'DevicesListCtrl as devicesListCtrl',
                         templateUrl: 'app/devices/devices.tmpl.html'
                     }
                 }
             })
     })
-    .controller('DevicesCtrl', function($scope) {
-
+    .controller('DevicesListCtrl', function(DevicesModel) {
+        var devicesListCtrl = this;
+        devicesListCtrl.devices = DevicesModel.getDevices();
     })
 ;
