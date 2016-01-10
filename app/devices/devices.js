@@ -17,6 +17,11 @@ angular.module('devices', [
     })
     .controller('DevicesListCtrl', function(DevicesModel) {
         var devicesListCtrl = this;
-        devicesListCtrl.devices = DevicesModel.getDevices();
+
+        DevicesModel.getDevices()
+            .then(function(result) {
+                devicesListCtrl.devices = result.data;
+                console.log('result', result);
+            });
     })
 ;
